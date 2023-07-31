@@ -1,0 +1,19 @@
+[build]
+  command = "npm install && npm run build" # Câu lệnh để cài đặt dependencies và xây dựng ứng dụng của bạn
+  publish = "dist" # Thư mục chứa các tệp tĩnh của ứng dụng sau khi xây dựng, trong trường hợp này là thư mục "dist"
+
+[[redirects]] # Định tuyến các yêu cầu
+  from = "/run" # Định tuyến các yêu cầu đến "/run" (tùy chỉnh cho đường dẫn của bạn)
+  to = "/.netlify/functions/run" # Chỉ định endpoint hoặc API Function của bạn để xử lý yêu cầu này
+
+[[redirects]] # Điều hướng các yêu cầu khác đến trang chủ (index.html)
+  from = "/*" # Định tuyến các yêu cầu khác đến "/index.html"
+  to = "/index.html"
+  status = 200
+
+[build.environment] # Cài đặt môi trường nếu bạn cần
+  NODE_ENV = "production" # Chẳng hạn, bạn có thể thiết lập biến môi trường NODE_ENV thành "production"
+
+[build]
+  command = "npm run build"
+  functions = "functions" # Thư mục chứa các functions/APIs của bạn nếu có
